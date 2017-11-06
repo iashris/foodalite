@@ -6,28 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Foodalite WebApp</title>
 </head>
-
+<link rel="stylesheet" type="text/css" href="css/main.css">
 <body>
+	<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB6LLgtF39Y1pO_C8fXvmKr3xMk_yONtzk",
+    authDomain: "foodalite-860f6.firebaseapp.com",
+    databaseURL: "https://foodalite-860f6.firebaseio.com",
+    projectId: "foodalite-860f6",
+    storageBucket: "foodalite-860f6.appspot.com",
+    messagingSenderId: "693768617196"
+  };
+  firebase.initializeApp(config);
+</script>
     <input type="file" id="files" name="files[]" multiple />
-    <output id="list"></output>
-
-    <script>
-        function handleFileSelect(evt) {
-            var files = evt.target.files; // FileList object
-
-            // files is a FileList of File objects. List some properties.
-            var output = [];
-            for (var i = 0, f; f = files[i]; i++) {
-                output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                    f.size, ' bytes, last modified: ',
-                    f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-                    '</li>');
-            }
-            document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-        }
-
-        document.getElementById('files').addEventListener('change', handleFileSelect, false);
-    </script>
+    <output id="list"></output><br>
+    <button id="upload" onclick="upload();">Upload</button>
+    <script type="text/javascript" src="js/camera.js"></script>
 </body>
 
 </html>
